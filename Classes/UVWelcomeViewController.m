@@ -130,7 +130,7 @@
     NSString *identifier = @"";
     NSInteger style = UITableViewCellStyleValue1;
 
-    if (indexPath.section == 0 && indexPath.row == 0 && [UVSession currentSession].config.showContactUs)
+    if (indexPath.section == 0 && indexPath.row == 0 && [UVSession currentSession].config.showWelcomeContactUs)
         identifier = @"Contact";
     else if (indexPath.section == 0 && [UVSession currentSession].config.showForum)
         identifier = @"Forum";
@@ -156,15 +156,15 @@
     if ([UVSession currentSession].config.showKnowledgeBase && ([[UVSession currentSession].topics count] > 0 || [[UVSession currentSession].articles count] > 0))
         sections++;
     
-    if ([UVSession currentSession].config.showForum || [UVSession currentSession].config.showContactUs || [UVSession currentSession].config.showPostIdea)
+    if ([UVSession currentSession].config.showForum || [UVSession currentSession].config.showWelcomeContactUs || [UVSession currentSession].config.showPostIdea)
         sections++;
 
     return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)theTableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0 && ([UVSession currentSession].config.showForum || [UVSession currentSession].config.showContactUs || [UVSession currentSession].config.showPostIdea))
-        return (([UVSession currentSession].config.showForum || [UVSession currentSession].config.showPostIdea) && [UVSession currentSession].config.showContactUs) ? 2 : 1;
+    if (section == 0 && ([UVSession currentSession].config.showForum || [UVSession currentSession].config.showWelcomeContactUs || [UVSession currentSession].config.showPostIdea))
+        return (([UVSession currentSession].config.showForum || [UVSession currentSession].config.showPostIdea) && [UVSession currentSession].config.showWelcomeContactUs) ? 2 : 1;
     else if ([self showArticles])
         return [[UVSession currentSession].articles count] + ([UVSession currentSession].articlePagination.hasMoreData ? 1 : 0);
     else
@@ -172,7 +172,7 @@
 }
 
 - (void)tableView:(UITableView *)theTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0 && indexPath.row == 0 && [UVSession currentSession].config.showContactUs) {
+    if (indexPath.section == 0 && indexPath.row == 0 && [UVSession currentSession].config.showWelcomeContactUs) {
         [self presentModalViewController:[UVContactViewController new]];
     } else if (indexPath.section == 0 && [UVSession currentSession].config.showForum) {
         UVSuggestionListViewController *next = [UVSuggestionListViewController new];
@@ -211,7 +211,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)theTableView titleForHeaderInSection:(NSInteger)section {
-    if (section == 0 && ([UVSession currentSession].config.showForum || [UVSession currentSession].config.showContactUs || [UVSession currentSession].config.showPostIdea))
+    if (section == 0 && ([UVSession currentSession].config.showForum || [UVSession currentSession].config.showWelcomeContactUs || [UVSession currentSession].config.showPostIdea))
         return nil;
     else if ([UVSession currentSession].config.topicId)
         return [((UVHelpTopic *)[[UVSession currentSession].topics objectAtIndex:0]) name];

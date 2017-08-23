@@ -46,10 +46,15 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     SEL setupCellSelector = NSSelectorFromString(@"setupCellForRow:indexPath:");
+    
     if ([self respondsToSelector:setupCellSelector]) {
         return [self performSelector:setupCellSelector withObject:tableView withObject:indexPath];
     }
+    
+    return [[UITableViewCell alloc] init];
+    
 }
 
 #pragma mark - Table view delegate

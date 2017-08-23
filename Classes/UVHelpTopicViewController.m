@@ -39,7 +39,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [UVSession currentSession].config.showContactUs ? 2 : 1;
+    return [UVSession currentSession].config.showTopicContactUs ? 2 : 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

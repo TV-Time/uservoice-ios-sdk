@@ -50,7 +50,8 @@
         _secret = theSecret;
         _showForum = YES;
         _showPostIdea = YES;
-        _showContactUs = YES;
+        _showWelcomeContactUs = YES;
+        _showTopicContactUs = YES;
         _showKnowledgeBase = YES;
     }
     return self;
@@ -87,11 +88,18 @@
         return _showPostIdea;
 }
 
-- (BOOL)showContactUs {
+- (BOOL)showWelcomeContactUs {
     if ([UVSession currentSession].clientConfig && ![UVSession currentSession].clientConfig.ticketsEnabled)
         return NO;
     else
-        return _showContactUs;
+        return _showWelcomeContactUs;
+}
+
+- (BOOL)showTopicContactUs {
+    if ([UVSession currentSession].clientConfig && ![UVSession currentSession].clientConfig.ticketsEnabled)
+        return NO;
+    else
+        return _showTopicContactUs;
 }
 
 - (BOOL)showKnowledgeBase {

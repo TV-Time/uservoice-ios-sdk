@@ -29,7 +29,8 @@
 @property (nonatomic, assign) NSInteger forumId;
 @property (nonatomic, assign) BOOL showForum;
 @property (nonatomic, assign) BOOL showPostIdea;
-@property (nonatomic, assign) BOOL showContactUs;
+@property (nonatomic, assign) BOOL showWelcomeContactUs;
+@property (nonatomic, assign) BOOL showTopicContactUs;
 @property (nonatomic, assign) BOOL showKnowledgeBase;
 @property (nonatomic, retain) NSString* extraTicketInfo;
 @property (nonatomic, retain) NSDictionary *userTraits;
